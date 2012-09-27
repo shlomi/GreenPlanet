@@ -1,0 +1,53 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.greenplanet"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="8" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    
+    <!-- אנחנו צריכים להוסיף לכאן כל אקטיביטי או שירות ) ואולי אף כל מחלקה שאנו רוצים לשלוח אליה הודעות ) -->
+    <application
+        android:icon="@drawable/leaf"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+       
+        <activity
+            android:name=".GreenPlanet"
+            android:label="@string/title_GreenPlanet" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        
+        <activity
+            android:name=".SendActivity"
+            android:label="@string/title_SendActivity" >
+        </activity>
+        
+        <activity
+            android:name=".AddressActivity"
+            android:label="@string/title_AddressActivity" >
+        </activity>
+        
+        <service 
+            android:enabled="true" 
+            android:name=".UploadService" >
+        </service>
+        
+        <service 
+            android:enabled="true" 
+            android:name=".LocationService" >
+        </service>
+        
+    </application>
+
+</manifest>

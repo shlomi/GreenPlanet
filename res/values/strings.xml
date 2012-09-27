@@ -1,0 +1,26 @@
+<resources>
+
+    <string name="app_name">GreenPlanet</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    
+    <string name="title_GreenPlanet">GreenPlanet</string>
+    <string name="GreenPlanet_button1Text">דיווח</string>
+    <string name="GreenPlanet_button2Text">יציאה</string>
+    <string name="GreenPlanet_textView1Text">1111</string>
+    <string name="GreenPlanet_textView2Text">צלמו מפגע שפגשתם ושלחו, בזה תעזרו לנו לשמור על ארץ ישראל נקיה ויפה.</string>
+    
+    <string name="title_SendActivity">SendActivity</string>
+    <string name="SendActivity_imageView1contentDescription">תיאור</string>
+    <string name="SendActivity_button1Text">שלח</string>
+    <string name="SendActivity_button2Text">חזור</string>
+    
+    <string name="title_AddressActivity">AddressActivity</string>
+    <string name="AddressActivity_button1Text">שלח</string>
+    <string name="AddressActivity_button2Text">חזור למסך הראשי</string>
+    <string name="AddressActivity_textView6Text">כתובת</string>
+    <string name="AddressActivity_textView5Text">חזור למסך הראשי</string>
+    <string name="AddressActivity_textView4Text">רחוב</string>
+    <string name="AddressActivity_textView3Text">יישוב / עיר</string>
+    
+</resources>
