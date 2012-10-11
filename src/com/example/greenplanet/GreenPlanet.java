@@ -88,7 +88,7 @@ public class GreenPlanet extends Activity {
 		Date d = new Date();
     	CharSequence cs  = DateFormat.format("yyyy-MM-dd kk.mm.ss",d.getTime());
     	StaticContent.Path = Environment.getExternalStorageDirectory().getAbsolutePath() 
-    	                    		+ "/DCIM/Camera/" + cs + ".jpg"; 
+    	                    		+ "/DCIM/Camera/" + cs.toString() + ".jpg"; 
 
     	File file = new File(StaticContent.Path); 
 	    Uri Picture = Uri.fromFile(file);
