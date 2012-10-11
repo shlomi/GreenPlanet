@@ -50,7 +50,7 @@ public class Constants
 	/**           */
 	final static int FLAG_ACTIVITY_NEW_TASK = 268435456;
 	/**           */
-	final static int    MAX_BUFFER_SIZE = 1*1024*1024;
+	final static int    MAX_BUFFER_SIZE = 4*1024*1024;
 	
 	
 	

@@ -5,6 +5,7 @@ import java.util.Date;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.text.format.DateFormat;
 import android.view.View;
@@ -86,9 +87,10 @@ public class GreenPlanet extends Activity {
 	{		    	
 		Date d = new Date();
     	CharSequence cs  = DateFormat.format("yyyy-MM-dd kk.mm.ss",d.getTime());
-    	StaticContent.Path = "/mnt/sdcard/DCIM/Camera/" + cs + ".jpg"; 
+    	StaticContent.Path = Environment.getExternalStorageDirectory().getAbsolutePath() 
+    	                    		+ "/DCIM/Camera/" + cs + ".jpg"; 
 
-    	File file = new File(StaticContent.Path); // File("/mnt/sdcard/DCIM/Camera",cs + ".jpg");
+    	File file = new File(StaticContent.Path); 
 	    Uri Picture = Uri.fromFile(file);
 	    
     	// אין צורך בהרשאת מצלמה כשאנו מבצעים את הגישה דרך אינטנט במקום ישירות 

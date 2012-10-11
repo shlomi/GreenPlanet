@@ -30,7 +30,7 @@ public class SendActivity extends Activity {
         Send = (Button) findViewById (R.id.button1);        
         image = (ImageView) findViewById (R.id.imageView1); 
         
-        Bitmap bm = BitmapFactory.decodeFile(StaticContent.Path); 
+        Bitmap bm = BitmapFactory.decodeFile(StaticContent.Path); /////////////////
         image.setImageBitmap(bm); 
                
         if (!StaticContent.isGPSlocationState) // אנו נדרשים לעבור לאקטיביטי 3    
