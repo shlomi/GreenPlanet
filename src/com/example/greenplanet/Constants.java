@@ -6,13 +6,14 @@ public class Constants
 	/**           */
 	final static String GREEN_PLANET_SERVER = "http://ascs.info/Projects/GreenPlanet/GreenPlanet.php";	
 	/**           */
-	final static String SERVER_REQUEST = "?Request=3";
+	final static String SERVER_REQUEST = "?Request=App";
 	
 	/**           */
-	final static String GREEN_PLANET_PREFERENCES = "GreenPlanet Pref";
-				
+	final static String GREEN_PLANET_PREFERENCES = "GreenPlanet Pref";				
 	/**           */
-	final static String USER_ID = "UserID";
+	final static String USER_ID = "UserID";	
+	/**           */
+	final static String GOOGLE_ACCOUNT = "GoogleAccount";
 	
 	/**           */
 	final static class COMPONENT_ID

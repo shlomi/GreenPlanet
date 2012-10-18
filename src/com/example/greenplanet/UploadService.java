@@ -16,6 +16,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+//import android.widget.Toast;
 
 public class UploadService extends IntentService {
 	
@@ -45,8 +46,19 @@ public class UploadService extends IntentService {
 	{
 		super.onDestroy();		
 	    // startService(msg);
-				
-		notifyMe();//
+		
+		// need permission WRITE_EXTERNAL_STORAGE
+    	File file = new File(StaticContent.Path); 
+    	if (file.delete()) //deleteOnExit()
+    	{	
+    		//Toast.makeText(this, "file deleted", Toast.LENGTH_LONG).show(); 
+    	}
+    	else
+    	{	
+    		//Toast.makeText(this, "file faild", Toast.LENGTH_LONG).show();
+    	}
+		
+    	notifyMe();//
 	    // if uploadservice ended successfully 
 		     // exit from app 	    	
 		//Toast.makeText(this, StaticContent.serverResponseBody, Toast.LENGTH_LONG).show();
@@ -69,8 +81,10 @@ public class UploadService extends IntentService {
         sbs.append(Constants.GREEN_PLANET_SERVER + Constants.SERVER_REQUEST + "&"); 
         String eqe = "=";
         String and = "&"; 
-        if ( (getUserID() != null ) && ( !getUserID().equals(Constants.EMPTY) ))
+        if ( !getUserID().equals(Constants.EMPTY) ) //  && (getUserID() != null ) ) 
         	sbs.append(Constants.USER_ID + eqe + getUserID() + and );	
+        if ( !getGoogleAccount().equals(Constants.EMPTY) )
+        	sbs.append(Constants.GOOGLE_ACCOUNT + eqe + getGoogleAccount() + and );	
     	if (StaticContent.isGPSLocationType) 
     	{
     		sbs.append(Constants.LONGITUDE + eqe + String.valueOf(StaticContent.location.getLongitude()) + and );
@@ -105,6 +119,14 @@ public class UploadService extends IntentService {
 	    editor.commit();
 	}
     
+	//
+	private String getGoogleAccount()
+	{
+		SharedPreferences sharedPreferences = 
+				      getSharedPreferences(Constants.GREEN_PLANET_PREFERENCES, MODE_PRIVATE);
+		return sharedPreferences.getString(Constants.GOOGLE_ACCOUNT,Constants.EMPTY);
+	}
+	
 	//
 	private void sendAll()
     {  
@@ -162,7 +184,8 @@ public class UploadService extends IntentService {
 			while((line = rd.readLine()) != null)      
 				response.append(line);           			
 			StaticContent.serverResponseBody = response.toString();
-			if ( StaticContent.serverResponseBody != null  &&  getUserID().equals(Constants.EMPTY) ) 
+			if ( (!StaticContent.serverResponseBody.equals(null)) &&
+			       (!StaticContent.serverResponseBody.equals(Constants.EMPTY)) )
 				setUserID(StaticContent.serverResponseBody);
 			StaticContent.uploadServiceEndedSuccessfully = true;	
 			

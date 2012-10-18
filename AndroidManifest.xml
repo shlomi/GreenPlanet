@@ -11,13 +11,15 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>   
     
-    <!-- אנחנו צריכים להוסיף לכאן כל אקטיביטי או שירות ) ואולי אף כל מחלקה שאנו רוצים לשלוח אליה הודעות ) -->
     <application
         android:icon="@drawable/leaf"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
-       
+        android:theme="@style/AppTheme" >       
+        <!-- אנחנו צריכים להוסיף לכאן כל אקטיביטי או שירות ) ואולי אף כל מחלקה שאנו רוצים לשלוח אליה הודעות ) -->
+        
         <activity
             android:name=".GreenPlanet"
             android:label="@string/title_GreenPlanet" >

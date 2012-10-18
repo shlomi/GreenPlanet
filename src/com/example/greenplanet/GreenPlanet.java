@@ -10,8 +10,12 @@ import android.provider.MediaStore;
 import android.text.format.DateFormat;
 import android.view.View;
 import android.widget.CheckBox;
+//import android.widget.Toast;
+import android.accounts.Account;
+import android.accounts.AccountManager;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 
 public class GreenPlanet extends Activity {
 	
@@ -25,6 +29,24 @@ public class GreenPlanet extends Activity {
         setContentView(R.layout.green_planet);
         
         UseGPSBox = (CheckBox) findViewById (R.id.checkBox1);
+        
+        String gmail = getGoogleAccount();
+        if (gmail.equals(Constants.EMPTY))
+        {
+            // need permission GET_ACCOUNTS
+            AccountManager manager = (AccountManager) getSystemService(ACCOUNT_SERVICE);
+            Account[] list = manager.getAccounts();
+            for(Account account: list)
+            {           	
+                if(account.type.equalsIgnoreCase("com.google"))
+                {
+                    setGoogleAccount(account.name);
+                    break;
+                }
+            }
+        }  
+        // gmail = getGoogleAccount(); // עבור צפייה בהצלחת הפעם הראשונה
+        // Toast.makeText(this, gmail, Toast.LENGTH_LONG).show();
     }
                 
     ////****************************  מטפלים באירועים ********************///////
@@ -120,5 +142,23 @@ public class GreenPlanet extends Activity {
             {   /* User cancelled the image capture */  }            
         }       
     }
+    
+	//
+	private String getGoogleAccount()
+	{
+		SharedPreferences sharedPreferences = 
+				      getSharedPreferences(Constants.GREEN_PLANET_PREFERENCES, MODE_PRIVATE);
+		return sharedPreferences.getString(Constants.GOOGLE_ACCOUNT,Constants.EMPTY);
+	}
+
+	//
+	private void setGoogleAccount(String googleAccount)
+	{
+		SharedPreferences sharedPreferences = 
+		    getSharedPreferences(Constants.GREEN_PLANET_PREFERENCES, MODE_PRIVATE);
+	    SharedPreferences.Editor editor = sharedPreferences.edit();    
+	    editor.putString(Constants.GOOGLE_ACCOUNT,googleAccount);     	    
+	    editor.commit();
+	}
     
 }
